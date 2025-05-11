@@ -208,111 +208,71 @@ class UserControllerTests {
 
 Spring Boot dramatically reduces the complexity of Spring applications while maintaining all its power! 🚀
 
+## **Maven - Short Notes for Entry-Level SWEs**
 
+### **What is Maven?**
+- **Build automation tool** for Java projects
+- Manages **dependencies** (libraries your project needs)
+- Standardizes **project structure**
+- Uses **XML configuration** (`pom.xml`)
+- Handles **compilation, testing, packaging, deployment**
 
-
-Here's a clear comparison of **MVP**, **MVVM**, and **MVC**—three popular UI architectural patterns used primarily in software development (commonly mobile and web apps):
-
----
-
-### 🔁 **1. MVC – Model-View-Controller**
-
-#### 🔹 **Components**
-
-* **Model**: Business logic and data (e.g., database).
-* **View**: UI elements (buttons, labels).
-* **Controller**: Mediator that handles user input, updates Model & View.
-
-#### 🔹 **Flow**
-
-User input → **Controller** → updates **Model** → updates **View**
-
-#### 🔹 **Use Cases**
-
-* Web frameworks like **ASP.NET MVC**, **Ruby on Rails**, **Django**, iOS.
-
-#### ✅ **Pros**
-
-* Simple and intuitive for small projects.
-* Separation of concerns.
-
-#### ❌ **Cons**
-
-* Tight coupling between View & Controller.
-* Not ideal for complex UI or heavy logic.
+### **Key Features:**
+✔ Dependency management  
+✔ Standard project layout  
+✔ Build lifecycle management  
+✔ Plugin ecosystem  
 
 ---
 
-### 👨‍💼 **2. MVP – Model-View-Presenter**
+## **Maven Build Lifecycle Stages**
 
-#### 🔹 **Components**
+Maven has **3 built-in lifecycles** with **phases** executed in order:
 
-* **Model**: Business/data logic.
-* **View**: Interface the user sees (no logic).
-* **Presenter**: Handles all UI logic and talks to the View through an interface.
+### **1. Default Lifecycle** (Main Build Process)
+| Phase | Description |
+|-------|-------------|
+| `validate` | Checks project correctness |
+| `compile` | Compiles source code |
+| `test` | Runs unit tests |
+| `package` | Creates JAR/WAR file |
+| `verify` | Runs integration tests |
+| `install` | Installs package to local Maven repo |
+| `deploy` | Copies package to remote repository |
 
-#### 🔹 **Flow**
+### **2. Clean Lifecycle**
+| Phase | Description |
+|-------|-------------|
+| `pre-clean` | Pre-clean tasks |
+| `clean` | Removes `target/` directory |
+| `post-clean` | Post-clean tasks |
 
-User input → **View** → forwards to **Presenter** → updates **Model** → sends result back to **Presenter** → updates **View**
-
-#### 🔹 **Use Cases**
-
-* Windows Forms, Android (older apps), WinForms.
-
-#### ✅ **Pros**
-
-* Testable: UI logic in Presenter.
-* Loose coupling via interfaces.
-
-#### ❌ **Cons**
-
-* Presenter can become bloated.
-* More boilerplate code.
-
----
-
-### 🔮 **3. MVVM – Model-View-ViewModel**
-
-#### 🔹 **Components**
-
-* **Model**: Business logic and data.
-* **View**: UI.
-* **ViewModel**: Abstracts the View; binds data & commands to UI.
-
-#### 🔹 **Flow**
-
-**View** ↔ **ViewModel** ↔ **Model**
-
-Two-way data binding is a key feature: changes in ViewModel reflect in View and vice versa automatically.
-
-#### 🔹 **Use Cases**
-
-* **WPF**, **Xamarin**, **Angular**, **Jetpack Compose**, **SwiftUI**, **React (somewhat similar)**
-
-#### ✅ **Pros**
-
-* Clean separation.
-* Great for unit testing.
-* Efficient for data-binding UIs.
-
-#### ❌ **Cons**
-
-* Steep learning curve.
-* Binding logic can be hard to debug.
+### **3. Site Lifecycle** (Documentation)
+| Phase | Description |
+|-------|-------------|
+| `pre-site` | Pre-site tasks |
+| `site` | Generates project documentation |
+| `post-site` | Post-site tasks |
+| `site-deploy` | Deploys site to server |
 
 ---
 
-### 📊 Comparison Table
+### **How to Use?**
+```bash
+# Common commands (executes all phases UP TO specified phase)
+mvn clean       # Runs clean lifecycle
+mvn compile     # Compiles code
+mvn test        # Runs tests
+mvn package     # Creates JAR/WAR
+mvn install     # Installs to local repo
 
-| Feature     | MVC               | MVP                          | MVVM                           |
-| ----------- | ----------------- | ---------------------------- | ------------------------------ |
-| UI Logic    | Controller        | Presenter                    | ViewModel                      |
-| Binding     | Manual            | Manual                       | Two-way binding                |
-| Testability | Medium            | High                         | High                           |
-| Coupling    | View ↔ Controller | View ↔ Presenter (via iface) | View ↔ ViewModel (binding)     |
-| Complexity  | Low to Medium     | Medium                       | Medium to High                 |
-| Used in     | Web apps, iOS     | Legacy Android, WinForms     | WPF, Android (modern), Angular |
+# Combined commands
+mvn clean package  # Cleans then builds
+mvn clean test     # Cleans then runs tests
+```
 
----
+### **Key Files**
+- `pom.xml` - Project configuration
+- `~/.m2/settings.xml` - User-specific Maven settings
 
-Would you like a visual diagram of the three architectures to better understand the flow?
+Maven makes Java project management consistent and dependency handling effortless! 🛠️
